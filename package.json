@@ -29,8 +29,7 @@
     "knex": "^0.10.0",
     "marked": "^0.3.5",
     "mysql": "^2.10.2",
-    "super-cache": "0.0.14",
-    "xss": "^0.2.10"
+    "super-cache": "0.0.14"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
