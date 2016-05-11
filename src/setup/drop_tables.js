@@ -9,19 +9,26 @@
 const fs = require('fs');
 const path = require('path');
 const Promise = require('bluebird');
-const hobbs = require('../');
+const hobbs = require('../../');
 
 hobbs.load('base');
 
 $.init(err => {
   if (err) throw err;
 
-  const tables = fs.readFileSync(path.resolve(__dirname, 'tables.sql'))
-                   .toString()
-                   .split(/;\s*\r?\n\r?\n/mg)
-                   .filter(v => v.trim());
+  const tables = [
+    'comment_likes',
+    'comments',
+    'notifications',
+    'tags',
+    'topic_contents',
+    'topic_likes',
+    'topics',
+    'users',
+  ];
+  const list = tables.map(name => $.mysql.schema.dropTableIfExists(name));
 
-  const list = tables.map(sql => $.mysql.raw(sql));
+
   Promise.all(list)
     .then(ret => {
       //console.log(ret);

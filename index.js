@@ -36,7 +36,7 @@ hobbs.config = function (files) {
   }
   return hobbs;
 };
-hobbs.config.files = [path.resolve(__dirname, 'config/default')];
+hobbs.config.files = [path.resolve(__dirname, 'dist/config/default')];
 
 hobbs.load = function (name) {
 

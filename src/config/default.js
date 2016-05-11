@@ -39,6 +39,6 @@ module.exports = function (set, get, has, conf) {
   set('mysql.cache.ttl', 600);
 
   // 响应头
-  conf.push('web.headers', ['X-hobbs-Version', require('../package.json').version]);
+  conf.push('web.headers', ['X-hobbs-Version', require('../../package.json').version]);
 
 };
