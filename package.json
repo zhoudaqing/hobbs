@@ -1,0 +1,43 @@
+{
+  "name": "hobbs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "npm run test:before && export DEBUG='hojs:*,project-core:*,knex:*,super-cache:*' && export NODE_ENV=dev,test && cd dist && mocha",
+    "test:debug": "npm run test:before && export DEBUG='hojs:*,project-core:*,knex:*,super-cache:*' && export NODE_ENV=dev,test && cd dist && mocha --debug-brk",
+    "test:before": "npm run test:drop-tables && npm run test:create-tables",
+    "test:create-tables": "export NODE_ENV=dev,test && node setup/create_tables.js",
+    "test:drop-tables": "export NODE_ENV=dev,test && node setup/drop_tables.js",
+    "clean": "rm -Rf dist",
+    "watch": "npm run clean && babel src -d dist --watch --source-maps=inline",
+    "compile": "npm run clean && babel src -d dist --source-maps=inline",
+    "postinstall": "npm run compile",
+    "dev": "export DEBUG='hojs:*,project-core:*,knex:*' && export NODE_ENV=dev && cd dist && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leizongmin/hobbs"
+  },
+  "author": "Zongmin Lei <leizongmin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "connect-redis": "^3.0.2",
+    "express-session": "^1.13.0",
+    "hojs": "0.0.7",
+    "knex": "^0.10.0",
+    "marked": "^0.3.5",
+    "mysql": "^2.10.2",
+    "request": "^2.69.0",
+    "super-cache": "0.0.14",
+    "xss": "^0.2.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-3": "^6.5.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.1"
+  }
+}
