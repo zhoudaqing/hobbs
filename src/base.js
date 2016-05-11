@@ -8,6 +8,7 @@
 
 import {resolve as resolvePath} from 'path';
 import Ho from 'hojs';
+import hobbs from '../';
 
 global.$ = new Ho({
   path: __dirname,
@@ -30,7 +31,9 @@ $.api.use(function (req, res, next) {
 });
 
 $.init.add(() => {
-  $.config.load(resolvePath(__dirname, '../config/default'));
+  for (const file of hobbs.config.files) {
+    $.config.load(file);
+  }
 });
 
 $.init.load(resolvePath(__dirname, 'init'));
