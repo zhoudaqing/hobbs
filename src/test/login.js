@@ -7,7 +7,7 @@
  */
 
 import assert from 'assert';
-import '../server';
+import '../test';
 
 $.test.suite('Login', function () {
 

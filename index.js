@@ -39,7 +39,23 @@ hobbs.config = function (files) {
 hobbs.config.files = [path.resolve(__dirname, 'config/default')];
 
 hobbs.load = function (name) {
+
+  if (hobbs.config.files.length <= 1) {
+    if (process.env.HOBBS_ENV) {
+      const configFiles = [];
+      const envs = process.env.HOBBS_ENV.split(',');
+      for (let env of envs) {
+        env = env.trim();
+        if (env) {
+          configFiles.push(path.resolve(`./config/${env}`));
+        }
+      }
+      hobbs.config(configFiles);
+    }
+  }
+
   name = name || 'server';
   hobbs[name];
   return $;
+
 };

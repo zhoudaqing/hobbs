@@ -10,37 +10,40 @@ $ npm install hobbs --save
 
 ## 使用
 
+新建文件`server.js`：
+
 ```javascript
 'use strict';
 
 import {resolve as resolvePath} from 'path';
 import hobbs from 'hobbs';
 
-// 设置配置文件
-const configFiles = [resolvePath(__dirname, '../config/default')];
-if (process.env.NODE_ENV) {
-  const envs = process.env.NODE_ENV.split(',');
-  for (let env of envs) {
-    env = env.trim();
-    if (env) {
-      configFiles.push(resolvePath(__dirname, `../config/${env}`));
-    }
-  }
-}
-hobbs.config(configFiles);
 
 // 载入hobbs
 hobbs.load();
-
-// 添加初始化文件
-$.init.load(resolvePath(__dirname, 'init'));
-$.init.load(resolvePath(__dirname, 'apis'));
 
 // 初始化服务
 $.init(err => {
   if (err) throw err;
   console.log('server started');
 });
+```
+
+新建配置文件`config/dev.js`：
+
+```javascript
+module.exports = function (set, get, has, conf) {
+
+  // 服务器监听端口
+  set('web.port', 3000);
+
+};
+```
+
+启动：
+
+```bash
+$ HOBBS_ENV=dev node server.js
 ```
 
 

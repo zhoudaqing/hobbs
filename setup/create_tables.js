@@ -9,7 +9,9 @@
 const fs = require('fs');
 const path = require('path');
 const Promise = require('bluebird');
-require('../dist/base');
+const hobbs = require('../');
+
+hobbs.load('base');
 
 $.init(err => {
   if (err) throw err;
