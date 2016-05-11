@@ -1,52 +1,3 @@
-# hobbs
-
-
-## 安装
-
-```bash
-$ npm install hobbs --save
-```
-
-
-## 使用
-
-```javascript
-'use strict';
-
-import {resolve as resolvePath} from 'path';
-import hobbs from 'hobbs';
-
-// 设置配置文件
-const configFiles = [resolvePath(__dirname, '../config/default')];
-if (process.env.NODE_ENV) {
-  const envs = process.env.NODE_ENV.split(',');
-  for (let env of envs) {
-    env = env.trim();
-    if (env) {
-      configFiles.push(resolvePath(__dirname, `../config/${env}`));
-    }
-  }
-}
-hobbs.config(configFiles);
-
-// 载入hobbs
-hobbs.load();
-
-// 添加初始化文件
-$.init.load(resolvePath(__dirname, 'init'));
-$.init.load(resolvePath(__dirname, 'apis'));
-
-// 初始化服务
-$.init(err => {
-  if (err) throw err;
-  console.log('server started');
-});
-```
-
-
-## License
-
-```
 The MIT License (MIT)
 
 Copyright (c) 2016 Zongmin Lei <leizongmin@gmail.com>
@@ -68,4 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
