@@ -1,11 +1,12 @@
 # hobbs
 
-
 ## 安装
 
 ```bash
 $ npm install hobbs --save
 ```
+
+**要求在 Node.js v4.0 及以上版本上运行**
 
 
 ## 使用
@@ -15,8 +16,8 @@ $ npm install hobbs --save
 ```javascript
 'use strict';
 
-import {resolve as resolvePath} from 'path';
-import hobbs from 'hobbs';
+const path = require('path');
+const hobbs = require('hobbs');
 
 
 // 载入hobbs
