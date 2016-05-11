@@ -31,15 +31,6 @@ $.api.use(function (req, res, next) {
 
 $.init.add(() => {
   $.config.load(resolvePath(__dirname, '../config/default'));
-  if (process.env.NODE_ENV) {
-    const envs = process.env.NODE_ENV.split(',');
-    for (let env of envs) {
-      env = env.trim();
-      if (env) {
-        $.config.load(resolvePath(__dirname, `../config/${env}`));
-      }
-    }
-  }
 });
 
 $.init.load(resolvePath(__dirname, 'init'));

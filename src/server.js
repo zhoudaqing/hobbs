@@ -14,8 +14,3 @@ $.init.add(() => {
 
   }
 });
-
-$.init(err => {
-  if (err) throw err;
-  console.log('server started');
-});

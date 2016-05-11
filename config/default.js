@@ -1,4 +1,4 @@
-module.exports = function (set, get, has) {
+module.exports = function (set, get, has, conf) {
 
   // 服务器监听端口
   set('web.port', 3000);
@@ -38,9 +38,7 @@ module.exports = function (set, get, has) {
   set('mysql.cache.connection.pool', 5);
   set('mysql.cache.ttl', 600);
 
-  // 跨域设置
-  set('web.headers', [
-    ['X-hobbs-Version', require('../package.json').version],
-  ]);
+  // 响应头
+  conf.push('web.headers', ['X-hobbs-Version', require('../package.json').version]);
 
 };
