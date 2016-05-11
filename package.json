@@ -12,8 +12,7 @@
     "clean": "rm -Rf dist",
     "watch": "npm run clean && babel src -d dist --watch --source-maps=inline",
     "compile": "npm run clean && babel src -d dist --source-maps=inline",
-    "postinstall": "npm run compile",
-    "dev": "export DEBUG='hojs:*,project-core:*,knex:*' && export NODE_ENV=dev && cd dist && nodemon server.js"
+    "postinstall": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,6 @@
     "babel-cli": "^6.6.5",
     "babel-preset-es2015-node4": "^2.0.3",
     "babel-preset-stage-3": "^6.5.0",
-    "mocha": "^2.4.5",
-    "nodemon": "^1.9.1"
+    "mocha": "^2.4.5"
   }
 }
