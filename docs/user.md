@@ -18,35 +18,7 @@ password | Password | 是 | 是 | undefined
 ```
 input = {
   "email": "test1@example.com",
-  "password": "123456",
-  "$cookies": {},
-  "$headers": {
-    "host": "127.0.0.1:56949",
-    "accept-encoding": "gzip, deflate",
-    "user-agent": "node-superagent/1.8.3",
-    "content-type": "multipart/form-data; boundary=--------------------------230537111836528878990384",
-    "content-length": "290",
-    "connection": "close"
-  },
-  "$session": {
-    "cookie": {
-      "originalMaxAge": 31536000000,
-      "expires": "2017-06-12T13:08:50.592Z",
-      "httpOnly": true,
-      "path": "/"
-    },
-    "user": {
-      "id": 1,
-      "email": "test1@example.com",
-      "name": "test1",
-      "about": "来自AA",
-      "updated_at": "2016-06-12T13:08:51.000Z",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "wechat_id": "",
-      "role": "user",
-      "logout_token": "FXS0gi9wUB"
-    }
-  }
+  "password": "123456"
 };
 output = {
   "status": 0,
@@ -58,8 +30,8 @@ output = {
       "name": "test1",
       "about": "来自AA",
       "role": "user",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "logout_token": "FXS0gi9wUB"
+      "last_logined_at": "2016-06-12T13:18:57.000Z",
+      "logout_token": "hsgHXsCpI8"
     }
   }
 };
@@ -68,24 +40,7 @@ output = {
 
 input = {
   "email": "test1@example.com",
-  "password": "12345678",
-  "$cookies": {},
-  "$headers": {
-    "host": "127.0.0.1:56954",
-    "accept-encoding": "gzip, deflate",
-    "user-agent": "node-superagent/1.8.3",
-    "content-type": "multipart/form-data; boundary=--------------------------354591024167160999046817",
-    "content-length": "292",
-    "connection": "close"
-  },
-  "$session": {
-    "cookie": {
-      "originalMaxAge": 31536000000,
-      "expires": "2017-06-12T13:08:50.641Z",
-      "httpOnly": true,
-      "path": "/"
-    }
-  }
+  "password": "12345678"
 };
 output = {
   "status": 0,
@@ -100,35 +55,7 @@ output = {
 
 input = {
   "email": "test1@example.com",
-  "password": "123456",
-  "$cookies": {},
-  "$headers": {
-    "host": "127.0.0.1:56956",
-    "accept-encoding": "gzip, deflate",
-    "user-agent": "node-superagent/1.8.3",
-    "content-type": "multipart/form-data; boundary=--------------------------682380502133852521492374",
-    "content-length": "290",
-    "connection": "close"
-  },
-  "$session": {
-    "cookie": {
-      "originalMaxAge": 31536000000,
-      "expires": "2017-06-12T13:08:50.673Z",
-      "httpOnly": true,
-      "path": "/"
-    },
-    "user": {
-      "id": 1,
-      "email": "test1@example.com",
-      "name": "test1",
-      "about": "来自AA",
-      "updated_at": "2016-06-12T13:08:51.000Z",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "wechat_id": "",
-      "role": "user",
-      "logout_token": "T6GEtZezPo"
-    }
-  }
+  "password": "123456"
 };
 output = {
   "status": 0,
@@ -140,8 +67,8 @@ output = {
       "name": "test1",
       "about": "来自AA",
       "role": "user",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "logout_token": "T6GEtZezPo"
+      "last_logined_at": "2016-06-12T13:18:57.000Z",
+      "logout_token": "Mb5Bva81Pi"
     }
   }
 };
@@ -193,36 +120,7 @@ $user | UserSession | 是 | 是 | 通过`/login`接口登录后即自动包含�
 使用示例：
 
 ```
-input = {
-  "$cookies": {},
-  "$headers": {
-    "host": "127.0.0.1:56952",
-    "accept-encoding": "gzip, deflate",
-    "cookie": "hojs.sid=s%3AJBEslFH3tvUcV6iJZHiquSZYqgYnzPc1.a%2BIDTjxMkCLeel%2FUSR2te1H3g2quonBCo29vxhsV3WU",
-    "user-agent": "node-superagent/1.8.3",
-    "connection": "close"
-  },
-  "$session": {
-    "cookie": {
-      "originalMaxAge": 31536000000,
-      "expires": "2017-06-12T13:08:50.620Z",
-      "httpOnly": true,
-      "path": "/"
-    },
-    "user": {
-      "id": 1,
-      "email": "test1@example.com",
-      "name": "test1",
-      "about": "来自AA",
-      "updated_at": "2016-06-12T13:08:51.000Z",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "wechat_id": "",
-      "role": "user",
-      "logout_token": "FXS0gi9wUB"
-    }
-  },
-  "$user": "[Circular]"
-};
+input = {};
 output = {
   "status": 0,
   "result": {
@@ -233,8 +131,8 @@ output = {
       "name": "test1",
       "about": "来自AA",
       "role": "user",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "logout_token": "FXS0gi9wUB"
+      "last_logined_at": "2016-06-12T13:18:57.000Z",
+      "logout_token": "hsgHXsCpI8"
     }
   }
 };

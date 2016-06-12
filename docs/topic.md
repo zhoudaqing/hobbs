@@ -39,37 +39,7 @@ sort_order | SortOrder | 是 | 否 | 仅管理员可设置，其他用户设置�
 input = {
   "title": "这是第一篇文章",
   "content": "这里是内容",
-  "tags": "test,first",
-  "$cookies": {},
-  "$headers": {
-    "host": "127.0.0.1:56958",
-    "accept-encoding": "gzip, deflate",
-    "cookie": "hojs.sid=s%3Aoc2GGvNdgL_NyoOZVWr1cqfpJ76zAz2v.wSUCwoLC4lN2MjUjgWJVj2X7VQ8uiCa4NBWTjQB5Jb4",
-    "user-agent": "node-superagent/1.8.3",
-    "content-type": "multipart/form-data; boundary=--------------------------101471228619118738521604",
-    "content-length": "415",
-    "connection": "close"
-  },
-  "$session": {
-    "cookie": {
-      "originalMaxAge": 31536000000,
-      "expires": "2017-06-12T13:08:50.714Z",
-      "httpOnly": true,
-      "path": "/"
-    },
-    "user": {
-      "id": 1,
-      "email": "test1@example.com",
-      "name": "test1",
-      "about": "来自AA",
-      "updated_at": "2016-06-12T13:08:51.000Z",
-      "last_logined_at": "2016-06-12T13:08:51.000Z",
-      "wechat_id": "",
-      "role": "user",
-      "logout_token": "T6GEtZezPo"
-    }
-  },
-  "$user": "[Circular]"
+  "tags": "test,first"
 };
 output = {
   "status": 0,
@@ -81,9 +51,9 @@ output = {
       "title": "这是第一篇文章",
       "tags": "",
       "content": "这里是内容",
-      "created_at": "2016-06-12T13:08:51.000Z",
-      "updated_at": "2016-06-12T13:08:51.000Z",
-      "last_commented_at": "2016-06-12T13:08:51.000Z",
+      "created_at": "2016-06-12T13:18:57.000Z",
+      "updated_at": "2016-06-12T13:18:57.000Z",
+      "last_commented_at": "2016-06-12T13:18:57.000Z",
       "sort_order": 0
     }
   }

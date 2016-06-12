@@ -723,18 +723,18 @@
             "tags": "test,first",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:56958",
+              "host": "127.0.0.1:57316",
               "accept-encoding": "gzip, deflate",
-              "cookie": "hojs.sid=s%3Aoc2GGvNdgL_NyoOZVWr1cqfpJ76zAz2v.wSUCwoLC4lN2MjUjgWJVj2X7VQ8uiCa4NBWTjQB5Jb4",
+              "cookie": "hojs.sid=s%3Ad7eSdefYtI7Utb25SGNDlGrW_USE1Ulv.fwdQPudozqCS%2BfcjrlnJS1x5YyBuSxa%2BrFubwIdt8S0",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------101471228619118738521604",
+              "content-type": "multipart/form-data; boundary=--------------------------160139067796643747109768",
               "content-length": "415",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T13:08:50.714Z",
+                "expires": "2017-06-12T13:18:56.712Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -743,11 +743,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T13:08:51.000Z",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "updated_at": "2016-06-12T13:18:57.000Z",
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "T6GEtZezPo"
+                "logout_token": "Mb5Bva81Pi"
               }
             },
             "$user": "[Circular]"
@@ -762,9 +762,9 @@
                 "title": "这是第一篇文章",
                 "tags": "",
                 "content": "这里是内容",
-                "created_at": "2016-06-12T13:08:51.000Z",
-                "updated_at": "2016-06-12T13:08:51.000Z",
-                "last_commented_at": "2016-06-12T13:08:51.000Z",
+                "created_at": "2016-06-12T13:18:57.000Z",
+                "updated_at": "2016-06-12T13:18:57.000Z",
+                "last_commented_at": "2016-06-12T13:18:57.000Z",
                 "sort_order": 0
               }
             }
@@ -1114,17 +1114,17 @@
             "password": "123456",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:56949",
+              "host": "127.0.0.1:57307",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------230537111836528878990384",
+              "content-type": "multipart/form-data; boundary=--------------------------612939628011800050138462",
               "content-length": "290",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T13:08:50.592Z",
+                "expires": "2017-06-12T13:18:56.591Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1133,11 +1133,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T13:08:51.000Z",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "updated_at": "2016-06-12T13:18:57.000Z",
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "FXS0gi9wUB"
+                "logout_token": "hsgHXsCpI8"
               }
             }
           },
@@ -1151,8 +1151,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
-                "logout_token": "FXS0gi9wUB"
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
+                "logout_token": "hsgHXsCpI8"
               }
             }
           }
@@ -1163,17 +1163,17 @@
             "password": "12345678",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:56954",
+              "host": "127.0.0.1:57312",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------354591024167160999046817",
+              "content-type": "multipart/form-data; boundary=--------------------------531157523680562007135295",
               "content-length": "292",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T13:08:50.641Z",
+                "expires": "2017-06-12T13:18:56.643Z",
                 "httpOnly": true,
                 "path": "/"
               }
@@ -1194,17 +1194,17 @@
             "password": "123456",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:56956",
+              "host": "127.0.0.1:57314",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------682380502133852521492374",
+              "content-type": "multipart/form-data; boundary=--------------------------906436064170455781413248",
               "content-length": "290",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T13:08:50.673Z",
+                "expires": "2017-06-12T13:18:56.669Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1213,11 +1213,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T13:08:51.000Z",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "updated_at": "2016-06-12T13:18:57.000Z",
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "T6GEtZezPo"
+                "logout_token": "Mb5Bva81Pi"
               }
             }
           },
@@ -1231,8 +1231,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
-                "logout_token": "T6GEtZezPo"
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
+                "logout_token": "Mb5Bva81Pi"
               }
             }
           }
@@ -1321,16 +1321,16 @@
           "input": {
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:56952",
+              "host": "127.0.0.1:57310",
               "accept-encoding": "gzip, deflate",
-              "cookie": "hojs.sid=s%3AJBEslFH3tvUcV6iJZHiquSZYqgYnzPc1.a%2BIDTjxMkCLeel%2FUSR2te1H3g2quonBCo29vxhsV3WU",
+              "cookie": "hojs.sid=s%3AIr5iAy1Q3wkpsO4HF5JhTBLJEHjL4ye8.Q1Yy%2BaXKcIjDg65jN0iFIEGhsOA%2FNoQ07aIXqi0e5Is",
               "user-agent": "node-superagent/1.8.3",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T13:08:50.620Z",
+                "expires": "2017-06-12T13:18:56.620Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1339,11 +1339,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T13:08:51.000Z",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "updated_at": "2016-06-12T13:18:57.000Z",
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "FXS0gi9wUB"
+                "logout_token": "hsgHXsCpI8"
               }
             },
             "$user": "[Circular]"
@@ -1358,8 +1358,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T13:08:51.000Z",
-                "logout_token": "FXS0gi9wUB"
+                "last_logined_at": "2016-06-12T13:18:57.000Z",
+                "logout_token": "hsgHXsCpI8"
               }
             }
           }
