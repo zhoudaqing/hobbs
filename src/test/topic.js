@@ -9,7 +9,7 @@
 import assert from 'assert';
 import '../test';
 
-$.test.suite('Topic', function () {
+$.test.describe('Topic', function () {
 
   const session = $.test.session();
   const status = {};

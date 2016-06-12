@@ -9,7 +9,7 @@
 import assert from 'assert';
 import '../test';
 
-$.test.suite('Login', function () {
+$.test.describe('Login', function () {
 
   it('success', async function () {
 
