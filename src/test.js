@@ -20,4 +20,6 @@ $.init(err => {
 });
 
 // 生成文档
-$.api.docs.takeSample().saveOnExit(path.resolve(__dirname, '../docs'));
+$.api.docs.takeSample()
+          .markdown()
+          .saveOnExit(path.resolve(__dirname, '../docs'));

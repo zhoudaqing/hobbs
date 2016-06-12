@@ -5,201 +5,230 @@
       "formatter": "v => String(v).toLowerCase() === 'true' ? true : false",
       "paramsChecker": null,
       "description": "boolean",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Boolean"
     },
     "Date": {
       "checker": "v => v instanceof Date || typeof v === 'string' && _validator2.default.isDate(v)",
       "formatter": "v => new Date(v)",
       "paramsChecker": null,
       "description": "date",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Date"
     },
     "String": {
       "checker": "v => typeof v === 'string'",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "string",
-      "isDefault": true
+      "isDefault": true,
+      "name": "String"
     },
     "TrimString": {
       "checker": "v => typeof v === 'string'",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "auto trim string",
-      "isDefault": false
+      "isDefault": false,
+      "name": "TrimString"
     },
     "Number": {
       "checker": "(v, p) => {\n      const ok = !isNaN(v);\n      if (ok && p) {\n        if ('min' in p && !(v >= p.min)) return false;\n        if ('max' in p && !(v <= p.max)) return false;\n      }\n      return ok;\n    }",
       "formatter": "v => Number(v)",
       "description": "number",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Number"
     },
     "Integer": {
       "checker": "v => _validator2.default.isInt(String(v))",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "integer",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Integer"
     },
     "Float": {
       "checker": "v => _validator2.default.isFloat(String(v))",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "float",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Float"
     },
     "Object": {
       "checker": "v => v && typeof v === 'object'",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "object",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Object"
     },
     "Array": {
       "checker": "v => Array.isArray(v)",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "array",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Array"
     },
     "JSON": {
       "checker": "v => typeof v === 'string' && _validator2.default.isJSON(v)",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "string is valid JSON",
-      "isDefault": true
+      "isDefault": true,
+      "name": "JSON"
     },
     "Any": {
       "checker": "v => true",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "can be any type",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Any"
     },
     "MongoId": {
       "checker": "v => _validator2.default.isMongoId(String(v))",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "string is a valid hex-encoded representation of a MongoDB ObjectId",
-      "isDefault": true
+      "isDefault": true,
+      "name": "MongoId"
     },
     "Email": {
       "checker": "v => typeof v === 'string' && _validator2.default.isEmail(v)",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "string is an email",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Email"
     },
     "Domain": {
       "checker": "v => typeof v === 'string' && _validator2.default.isFQDN(v)",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "string is a fully qualified domain name (e.g. domain.com)",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Domain"
     },
     "Alpha": {
       "checker": "v => typeof v === 'string' && _validator2.default.isAlpha(v)",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "string contains only letters (a-zA-Z).",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Alpha"
     },
     "AlphaNumeric": {
       "checker": "v => typeof v === 'string' && _validator2.default.isAlphanumeric(v)",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "string contains only letters and numbers",
-      "isDefault": true
+      "isDefault": true,
+      "name": "AlphaNumeric"
     },
     "Ascii": {
       "checker": "v => typeof v === 'string' && _validator2.default.isAscii(v)",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "string contains ASCII chars only",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Ascii"
     },
     "Base64": {
       "checker": "v => typeof v === 'string' && _validator2.default.isBase64(v)",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "string is base64 encoded",
-      "isDefault": true
+      "isDefault": true,
+      "name": "Base64"
     },
     "URL": {
       "checker": "v => typeof v === 'string' && _validator2.default.isURL(v)",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "string is an URL",
-      "isDefault": true
+      "isDefault": true,
+      "name": "URL"
     },
     "Password": {
       "checker": "v => typeof v === 'string' && v.length >= 5 && v.length <= 100",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "密码长度为6~100个字符",
-      "isDefault": false
+      "isDefault": false,
+      "name": "Password"
     },
     "Tags": {
       "checker": "v => Array.isArray(v) || typeof v === 'string'",
       "formatter": "v => {\n      if (typeof v === 'string') v = v.split(',');\n      return v.map(v => String(v).trim().toLowerCase()).filter(v => v && ALLOW_TAGS.indexOf(v) !== -1);\n    }",
       "paramsChecker": null,
       "description": "标签，可以为数组或逗号分隔的字符串，如\"share,good\"",
-      "isDefault": false
+      "isDefault": false,
+      "name": "Tags"
     },
     "TopicId": {
       "checker": "v => $.validator.isInt(v)",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "主题ID",
-      "isDefault": false
+      "isDefault": false,
+      "name": "TopicId"
     },
     "TopicTitle": {
       "checker": "v => {\n      if (typeof v === 'string') {\n        v = v.trim();\n        return v.length >= 6 && v.length <= 100;\n      } else {\n        return false;\n      }\n    }",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "标题为5~100个字符",
-      "isDefault": false
+      "isDefault": false,
+      "name": "TopicTitle"
     },
     "CommentId": {
       "checker": "v => $.validator.isInt(v)",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "评论ID",
-      "isDefault": false
+      "isDefault": false,
+      "name": "CommentId"
     },
     "MarkdownContent": {
       "checker": "v => {\n      if (typeof v === 'string') {\n        v = v.trim();\n        return v.length > 0 && v.length < 32 * 1024;\n      } else {\n        return false;\n      }\n    }",
       "formatter": "v => v.trim()",
       "paramsChecker": null,
       "description": "Markdown格式的内容，不能为空，长度不超过32K",
-      "isDefault": false
+      "isDefault": false,
+      "name": "MarkdownContent"
     },
     "UserSession": {
       "checker": "v => v.id && v.email",
       "formatter": "v => v",
       "paramsChecker": null,
       "description": "登录用户信息，在登录状态下无需手动提交参数",
-      "isDefault": false
+      "isDefault": false,
+      "name": "UserSession"
     },
     "NotificationId": {
       "checker": "v => $.validator.isInt(v)",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "通知消息ID",
-      "isDefault": false
+      "isDefault": false,
+      "name": "NotificationId"
     },
     "ListOrderBy": {
       "checker": "v => v && typeof v === 'string'",
       "formatter": "(v, params) => $.utils.parseOrderBy(v, params.columns)",
       "description": "查询结果的排序方向，示例：`id:asc`表示按照`id`从小到大排序（`desc`表示从大到小）",
-      "isDefault": false
+      "isDefault": false,
+      "name": "ListOrderBy"
     },
     "SortOrder": {
       "checker": "v => $.validator.isInt(v)",
       "formatter": "v => Number(v)",
       "paramsChecker": null,
       "description": "排序优先级，默认0，数字越大优先级越高，为了达到置顶效果，可以将其值设置为1",
-      "isDefault": false
+      "isDefault": false,
+      "name": "SortOrder"
     }
   },
   "errors": {
@@ -209,7 +238,8 @@
         "description": "other error",
         "status": -1,
         "type": "other_error"
-      }
+      },
+      "name": "other_error"
     },
     "missing_required_parameter": {
       "message": "(msg, data) => `missing required parameter ${ data.name }${ msg ? ': ' + msg : '' }`",
@@ -217,7 +247,8 @@
         "description": "missing required parameter error",
         "status": -2,
         "type": "missing_required_parameter"
-      }
+      },
+      "name": "missing_required_parameter"
     },
     "parameter_error": {
       "message": "(msg, data) => `incorrect parameter ${ data.name }${ msg ? ': ' + msg : '' }`",
@@ -225,7 +256,8 @@
         "description": "parameter error",
         "status": -3,
         "type": "parameter_error"
-      }
+      },
+      "name": "parameter_error"
     },
     "invalid_logout_token": {
       "message": "(msg, data) => `注销token无效：${ msg }`",
@@ -233,7 +265,8 @@
         "description": "注销token错误",
         "status": 1,
         "type": "invalid_logout_token"
-      }
+      },
+      "name": "invalid_logout_token"
     },
     "data_has_been_removed": {
       "message": "(msg, data) => `该数据已经被删除：${ msg }`",
@@ -241,7 +274,8 @@
         "description": "该数据已经被删除",
         "status": 2,
         "type": "data_has_been_removed"
-      }
+      },
+      "name": "data_has_been_removed"
     },
     "permission_denied": {
       "message": "(msg, data) => `没有权限操作：${ msg }`",
@@ -249,7 +283,8 @@
         "description": "没有权限操作",
         "status": 3,
         "type": "permission_denied"
-      }
+      },
+      "name": "permission_denied"
     }
   },
   "schemas": [
@@ -688,18 +723,18 @@
             "tags": "test,first",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:52643",
+              "host": "127.0.0.1:56958",
               "accept-encoding": "gzip, deflate",
-              "cookie": "hojs.sid=s%3AzMpC_8pebPTTiyhv0CG69Ub2eKJ9jKaq.PH%2BcvrsTYMvNp8Ut%2BLxU%2FzNWB1R7jcaXxKbcvP%2FiSmI",
+              "cookie": "hojs.sid=s%3Aoc2GGvNdgL_NyoOZVWr1cqfpJ76zAz2v.wSUCwoLC4lN2MjUjgWJVj2X7VQ8uiCa4NBWTjQB5Jb4",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------892878780550008435561629",
+              "content-type": "multipart/form-data; boundary=--------------------------101471228619118738521604",
               "content-length": "415",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T11:10:58.054Z",
+                "expires": "2017-06-12T13:08:50.714Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -708,11 +743,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T11:10:58.000Z",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
+                "updated_at": "2016-06-12T13:08:51.000Z",
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "gx0bR666s2"
+                "logout_token": "T6GEtZezPo"
               }
             },
             "$user": "[Circular]"
@@ -727,9 +762,9 @@
                 "title": "这是第一篇文章",
                 "tags": "",
                 "content": "这里是内容",
-                "created_at": "2016-06-12T11:10:03.000Z",
-                "updated_at": "2016-06-12T11:10:03.000Z",
-                "last_commented_at": "2016-06-12T11:10:03.000Z",
+                "created_at": "2016-06-12T13:08:51.000Z",
+                "updated_at": "2016-06-12T13:08:51.000Z",
+                "last_commented_at": "2016-06-12T13:08:51.000Z",
                 "sort_order": 0
               }
             }
@@ -1079,17 +1114,17 @@
             "password": "123456",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:52633",
+              "host": "127.0.0.1:56949",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------286497628565295526209838",
+              "content-type": "multipart/form-data; boundary=--------------------------230537111836528878990384",
               "content-length": "290",
               "connection": "close"
             },
             "$session": {
               "cookie": {
-                "originalMaxAge": 31535999999,
-                "expires": "2017-06-12T11:10:57.962Z",
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T13:08:50.592Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1098,11 +1133,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T11:10:58.000Z",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
+                "updated_at": "2016-06-12T13:08:51.000Z",
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "0qao9GaE25"
+                "logout_token": "FXS0gi9wUB"
               }
             }
           },
@@ -1116,8 +1151,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
-                "logout_token": "0qao9GaE25"
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "logout_token": "FXS0gi9wUB"
               }
             }
           }
@@ -1128,17 +1163,17 @@
             "password": "12345678",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:52639",
+              "host": "127.0.0.1:56954",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------020475968579892091378910",
+              "content-type": "multipart/form-data; boundary=--------------------------354591024167160999046817",
               "content-length": "292",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T11:10:58.001Z",
+                "expires": "2017-06-12T13:08:50.641Z",
                 "httpOnly": true,
                 "path": "/"
               }
@@ -1159,17 +1194,17 @@
             "password": "123456",
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:52641",
+              "host": "127.0.0.1:56956",
               "accept-encoding": "gzip, deflate",
               "user-agent": "node-superagent/1.8.3",
-              "content-type": "multipart/form-data; boundary=--------------------------264134975909292446745883",
+              "content-type": "multipart/form-data; boundary=--------------------------682380502133852521492374",
               "content-length": "290",
               "connection": "close"
             },
             "$session": {
               "cookie": {
                 "originalMaxAge": 31536000000,
-                "expires": "2017-06-12T11:10:58.026Z",
+                "expires": "2017-06-12T13:08:50.673Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1178,11 +1213,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T11:10:58.000Z",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
+                "updated_at": "2016-06-12T13:08:51.000Z",
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "gx0bR666s2"
+                "logout_token": "T6GEtZezPo"
               }
             }
           },
@@ -1196,8 +1231,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
-                "logout_token": "gx0bR666s2"
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "logout_token": "T6GEtZezPo"
               }
             }
           }
@@ -1286,16 +1321,16 @@
           "input": {
             "$cookies": {},
             "$headers": {
-              "host": "127.0.0.1:52637",
+              "host": "127.0.0.1:56952",
               "accept-encoding": "gzip, deflate",
-              "cookie": "hojs.sid=s%3AdG-2LnUEKq1daEsCB6lVGRAVNab_wm0m.hgDW7BUP0R%2FDr8aIO11L8hVjNh0Y9%2BlOZx2wB29f6rU",
+              "cookie": "hojs.sid=s%3AJBEslFH3tvUcV6iJZHiquSZYqgYnzPc1.a%2BIDTjxMkCLeel%2FUSR2te1H3g2quonBCo29vxhsV3WU",
               "user-agent": "node-superagent/1.8.3",
               "connection": "close"
             },
             "$session": {
               "cookie": {
-                "originalMaxAge": 31535999999,
-                "expires": "2017-06-12T11:10:57.982Z",
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T13:08:50.620Z",
                 "httpOnly": true,
                 "path": "/"
               },
@@ -1304,11 +1339,11 @@
                 "email": "test1@example.com",
                 "name": "test1",
                 "about": "来自AA",
-                "updated_at": "2016-06-12T11:10:58.000Z",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
+                "updated_at": "2016-06-12T13:08:51.000Z",
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
                 "wechat_id": "",
                 "role": "user",
-                "logout_token": "0qao9GaE25"
+                "logout_token": "FXS0gi9wUB"
               }
             },
             "$user": "[Circular]"
@@ -1323,8 +1358,8 @@
                 "name": "test1",
                 "about": "来自AA",
                 "role": "user",
-                "last_logined_at": "2016-06-12T11:10:58.000Z",
-                "logout_token": "0qao9GaE25"
+                "last_logined_at": "2016-06-12T13:08:51.000Z",
+                "logout_token": "FXS0gi9wUB"
               }
             }
           }
