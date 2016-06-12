@@ -1,0 +1,1382 @@
+{
+  "types": {
+    "Boolean": {
+      "checker": "v => typeof v === 'boolean' || typeof v === 'string' && _validator2.default.isBoolean(v)",
+      "formatter": "v => String(v).toLowerCase() === 'true' ? true : false",
+      "paramsChecker": null,
+      "description": "boolean",
+      "isDefault": true
+    },
+    "Date": {
+      "checker": "v => v instanceof Date || typeof v === 'string' && _validator2.default.isDate(v)",
+      "formatter": "v => new Date(v)",
+      "paramsChecker": null,
+      "description": "date",
+      "isDefault": true
+    },
+    "String": {
+      "checker": "v => typeof v === 'string'",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "string",
+      "isDefault": true
+    },
+    "TrimString": {
+      "checker": "v => typeof v === 'string'",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "auto trim string",
+      "isDefault": false
+    },
+    "Number": {
+      "checker": "(v, p) => {\n      const ok = !isNaN(v);\n      if (ok && p) {\n        if ('min' in p && !(v >= p.min)) return false;\n        if ('max' in p && !(v <= p.max)) return false;\n      }\n      return ok;\n    }",
+      "formatter": "v => Number(v)",
+      "description": "number",
+      "isDefault": true
+    },
+    "Integer": {
+      "checker": "v => _validator2.default.isInt(String(v))",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "integer",
+      "isDefault": true
+    },
+    "Float": {
+      "checker": "v => _validator2.default.isFloat(String(v))",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "float",
+      "isDefault": true
+    },
+    "Object": {
+      "checker": "v => v && typeof v === 'object'",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "object",
+      "isDefault": true
+    },
+    "Array": {
+      "checker": "v => Array.isArray(v)",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "array",
+      "isDefault": true
+    },
+    "JSON": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isJSON(v)",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "string is valid JSON",
+      "isDefault": true
+    },
+    "Any": {
+      "checker": "v => true",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "can be any type",
+      "isDefault": true
+    },
+    "MongoId": {
+      "checker": "v => _validator2.default.isMongoId(String(v))",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "string is a valid hex-encoded representation of a MongoDB ObjectId",
+      "isDefault": true
+    },
+    "Email": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isEmail(v)",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "string is an email",
+      "isDefault": true
+    },
+    "Domain": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isFQDN(v)",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "string is a fully qualified domain name (e.g. domain.com)",
+      "isDefault": true
+    },
+    "Alpha": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isAlpha(v)",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "string contains only letters (a-zA-Z).",
+      "isDefault": true
+    },
+    "AlphaNumeric": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isAlphanumeric(v)",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "string contains only letters and numbers",
+      "isDefault": true
+    },
+    "Ascii": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isAscii(v)",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "string contains ASCII chars only",
+      "isDefault": true
+    },
+    "Base64": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isBase64(v)",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "string is base64 encoded",
+      "isDefault": true
+    },
+    "URL": {
+      "checker": "v => typeof v === 'string' && _validator2.default.isURL(v)",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "string is an URL",
+      "isDefault": true
+    },
+    "Password": {
+      "checker": "v => typeof v === 'string' && v.length >= 5 && v.length <= 100",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "密码长度为6~100个字符",
+      "isDefault": false
+    },
+    "Tags": {
+      "checker": "v => Array.isArray(v) || typeof v === 'string'",
+      "formatter": "v => {\n      if (typeof v === 'string') v = v.split(',');\n      return v.map(v => String(v).trim().toLowerCase()).filter(v => v && ALLOW_TAGS.indexOf(v) !== -1);\n    }",
+      "paramsChecker": null,
+      "description": "标签，可以为数组或逗号分隔的字符串，如\"share,good\"",
+      "isDefault": false
+    },
+    "TopicId": {
+      "checker": "v => $.validator.isInt(v)",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "主题ID",
+      "isDefault": false
+    },
+    "TopicTitle": {
+      "checker": "v => {\n      if (typeof v === 'string') {\n        v = v.trim();\n        return v.length >= 6 && v.length <= 100;\n      } else {\n        return false;\n      }\n    }",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "标题为5~100个字符",
+      "isDefault": false
+    },
+    "CommentId": {
+      "checker": "v => $.validator.isInt(v)",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "评论ID",
+      "isDefault": false
+    },
+    "MarkdownContent": {
+      "checker": "v => {\n      if (typeof v === 'string') {\n        v = v.trim();\n        return v.length > 0 && v.length < 32 * 1024;\n      } else {\n        return false;\n      }\n    }",
+      "formatter": "v => v.trim()",
+      "paramsChecker": null,
+      "description": "Markdown格式的内容，不能为空，长度不超过32K",
+      "isDefault": false
+    },
+    "UserSession": {
+      "checker": "v => v.id && v.email",
+      "formatter": "v => v",
+      "paramsChecker": null,
+      "description": "登录用户信息，在登录状态下无需手动提交参数",
+      "isDefault": false
+    },
+    "NotificationId": {
+      "checker": "v => $.validator.isInt(v)",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "通知消息ID",
+      "isDefault": false
+    },
+    "ListOrderBy": {
+      "checker": "v => v && typeof v === 'string'",
+      "formatter": "(v, params) => $.utils.parseOrderBy(v, params.columns)",
+      "description": "查询结果的排序方向，示例：`id:asc`表示按照`id`从小到大排序（`desc`表示从大到小）",
+      "isDefault": false
+    },
+    "SortOrder": {
+      "checker": "v => $.validator.isInt(v)",
+      "formatter": "v => Number(v)",
+      "paramsChecker": null,
+      "description": "排序优先级，默认0，数字越大优先级越高，为了达到置顶效果，可以将其值设置为1",
+      "isDefault": false
+    }
+  },
+  "errors": {
+    "other_error": {
+      "message": "msg => msg",
+      "data": {
+        "description": "other error",
+        "status": -1,
+        "type": "other_error"
+      }
+    },
+    "missing_required_parameter": {
+      "message": "(msg, data) => `missing required parameter ${ data.name }${ msg ? ': ' + msg : '' }`",
+      "data": {
+        "description": "missing required parameter error",
+        "status": -2,
+        "type": "missing_required_parameter"
+      }
+    },
+    "parameter_error": {
+      "message": "(msg, data) => `incorrect parameter ${ data.name }${ msg ? ': ' + msg : '' }`",
+      "data": {
+        "description": "parameter error",
+        "status": -3,
+        "type": "parameter_error"
+      }
+    },
+    "invalid_logout_token": {
+      "message": "(msg, data) => `注销token无效：${ msg }`",
+      "data": {
+        "description": "注销token错误",
+        "status": 1,
+        "type": "invalid_logout_token"
+      }
+    },
+    "data_has_been_removed": {
+      "message": "(msg, data) => `该数据已经被删除：${ msg }`",
+      "data": {
+        "description": "该数据已经被删除",
+        "status": 2,
+        "type": "data_has_been_removed"
+      }
+    },
+    "permission_denied": {
+      "message": "(msg, data) => `没有权限操作：${ msg }`",
+      "data": {
+        "description": "没有权限操作",
+        "status": 3,
+        "type": "permission_denied"
+      }
+    }
+  },
+  "schemas": [
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:53:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:53:9"
+      },
+      "method": "get",
+      "path": "/topic/item/:id/comments",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists"
+      ],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "skip": {
+          "type": "Number",
+          "comment": "查询评论的偏移量",
+          "default": 0,
+          "format": true
+        },
+        "limit": {
+          "type": "Number",
+          "comment": "查询评论的数量",
+          "default": 50,
+          "format": true
+        },
+        "order_by": {
+          "type": "ListOrderBy",
+          "params": {
+            "columns": [
+              "id",
+              "created_at",
+              "updated_at"
+            ]
+          },
+          "default": "id:desc",
+          "comment": "有效的排序字段有`id`, `created_at`, `updated_at`",
+          "format": true,
+          "_paramsJSON": "{\"columns\":[\"id\",\"created_at\",\"updated_at\"]}"
+        }
+      },
+      "group": "comment",
+      "title": "获取主题的评论列表"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:83:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:83:9"
+      },
+      "method": "post",
+      "path": "/topic/item/:id/comments",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_reply_comment_exists"
+      ],
+      "required": [
+        "$user",
+        "content"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "reply_id": {
+          "type": "CommentId",
+          "comment": "回复的评论ID，如果设置此参数，则被回复的评论的作者将收到通知",
+          "format": true
+        },
+        "content": {
+          "type": "MarkdownContent",
+          "comment": "内容",
+          "format": true
+        }
+      },
+      "group": "comment",
+      "title": "添加评论"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:110:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:110:9"
+      },
+      "method": "put",
+      "path": "/topic/item/:id/comment/:comment_id",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_comment_author_or_admin"
+      ],
+      "required": [
+        "$user",
+        "content"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "comment_id": {
+          "type": "CommentId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "content": {
+          "type": "MarkdownContent",
+          "comment": "评论内容",
+          "format": true
+        }
+      },
+      "group": "comment",
+      "title": "更新评论",
+      "description": "仅管理员或评论作者可操作"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:128:15",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:128:15"
+      },
+      "method": "delete",
+      "path": "/topic/item/:id/comment/:comment_id",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_comment_author_or_admin"
+      ],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "comment_id": {
+          "type": "CommentId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "comment",
+      "title": "删除评论",
+      "description": "仅管理员或评论作者可操作"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:141:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:141:9"
+      },
+      "method": "post",
+      "path": "/topic/item/:id/comment/:comment_id/like",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_comment_exists"
+      ],
+      "required": [
+        "$user",
+        "id",
+        "comment_id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "comment_id": {
+          "type": "CommentId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "comment",
+      "title": "评论点赞"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:154:15",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:154:15"
+      },
+      "method": "delete",
+      "path": "/topic/item/:id/comment/:comment_id/like",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_comment_exists"
+      ],
+      "required": [
+        "$user",
+        "id",
+        "comment_id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "comment_id": {
+          "type": "CommentId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "comment",
+      "title": "取消评论点赞"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/comment.js:167:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/comment.js:167:9"
+      },
+      "method": "get",
+      "path": "/topic/item/:id/comment/:comment_id/likes",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists",
+        "check_comment_exists"
+      ],
+      "required": [
+        "id",
+        "comment_id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "comment_id": {
+          "type": "CommentId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "给主题点赞的用户列表"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/notification.js:15:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/notification.js:15:9"
+      },
+      "method": "get",
+      "path": "/my/notifications/count",
+      "examples": [],
+      "middlewares": [],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        },
+        "type": {
+          "type": "TrimString",
+          "comment": "消息类型，目前可选的值是`reply`，不提供此参数表示全部",
+          "format": true
+        },
+        "is_read": {
+          "type": "Boolean",
+          "comment": "`true`表示只返回已读消息，默认`false`表示只返回未读消息",
+          "default": false,
+          "format": true
+        }
+      },
+      "group": "notification",
+      "title": "查询当前登录用户的通知消息数量"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/notification.js:34:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/notification.js:34:9"
+      },
+      "method": "get",
+      "path": "/my/notifications",
+      "examples": [],
+      "middlewares": [],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        },
+        "type": {
+          "type": "TrimString",
+          "comment": "消息类型，目前可选的值是`reply`，不提供此参数表示全部",
+          "format": true
+        },
+        "is_read": {
+          "type": "Boolean",
+          "comment": "`true`表示只返回已读消息，默认`false`表示只返回未读消息",
+          "default": false,
+          "format": true
+        },
+        "skip": {
+          "type": "Number",
+          "comment": "返回结果的偏移量",
+          "default": 0,
+          "format": true
+        },
+        "limit": {
+          "type": "Integer",
+          "comment": "仅返回前N条结果",
+          "default": 10,
+          "format": true
+        },
+        "order_by": {
+          "type": "ListOrderBy",
+          "params": {
+            "columns": [
+              "id",
+              "created_at",
+              "updated_at"
+            ]
+          },
+          "default": "id:desc",
+          "comment": "有效的排序字段有`id`, `created_at`, `updated_at`",
+          "format": true,
+          "_paramsJSON": "{\"columns\":[\"id\",\"created_at\",\"updated_at\"]}"
+        }
+      },
+      "group": "notification",
+      "title": "查询当前登录用户的通知消息"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/notification.js:75:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/notification.js:75:9"
+      },
+      "method": "post",
+      "path": "/my/notification/:id/read",
+      "examples": [],
+      "middlewares": [
+        "check_notification_owner"
+      ],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        },
+        "id": {
+          "type": "NotificationId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "notification",
+      "title": "将指定ID的通知设置为已读"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/test.js:15:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/test.js:15:9"
+      },
+      "method": "get",
+      "path": "/",
+      "examples": [],
+      "middlewares": [],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$headers": {
+          "type": "Object",
+          "format": true
+        }
+      },
+      "group": "test",
+      "title": "测试服务是否正常"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:17:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:17:9"
+      },
+      "method": "post",
+      "path": "/topic/new",
+      "examples": [
+        {
+          "input": {
+            "title": "这是第一篇文章",
+            "content": "这里是内容",
+            "tags": "test,first",
+            "$cookies": {},
+            "$headers": {
+              "host": "127.0.0.1:51603",
+              "accept-encoding": "gzip, deflate",
+              "cookie": "hojs.sid=s%3Agor4e0tJIXNA0fmEJZinthW66OkBfRbM.vFZYlgNaNkMmjKWEgA37nk3j%2FnfHH44UH%2Bq1gx2QCF0",
+              "user-agent": "node-superagent/1.8.3",
+              "content-type": "multipart/form-data; boundary=--------------------------562638718981546906991903",
+              "content-length": "415",
+              "connection": "close"
+            },
+            "$session": {
+              "cookie": {
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T10:05:56.754Z",
+                "httpOnly": true,
+                "path": "/"
+              },
+              "user": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "updated_at": "2016-06-12T10:05:57.000Z",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "wechat_id": "",
+                "role": "user",
+                "logout_token": "9lbXHQsTkm"
+              }
+            },
+            "$user": "[Circular]"
+          },
+          "output": {
+            "status": 0,
+            "result": {
+              "status": 0,
+              "result": {
+                "id": 1,
+                "author_id": 1,
+                "title": "这是第一篇文章",
+                "tags": "",
+                "content": "这里是内容",
+                "created_at": "2016-06-12T10:05:57.000Z",
+                "updated_at": "2016-06-12T10:05:57.000Z",
+                "last_commented_at": "2016-06-12T10:05:57.000Z",
+                "sort_order": 0
+              }
+            }
+          }
+        }
+      ],
+      "middlewares": [
+        "check_param_sort_order_only_admin"
+      ],
+      "required": [
+        "$user",
+        "title",
+        "content"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "title": {
+          "type": "TopicTitle",
+          "comment": "标题",
+          "format": true
+        },
+        "content": {
+          "type": "MarkdownContent",
+          "comment": "内容",
+          "format": true
+        },
+        "tags": {
+          "type": "Tags",
+          "comment": "标签（数组）：top:置顶, good:精华, ask:新手提问, share:交流讨论, activity:活动推荐, notice:公告通知, top和good仅管理员能设置，其他用户设置时会被自动忽略",
+          "default": [],
+          "format": true
+        },
+        "sort_order": {
+          "type": "SortOrder",
+          "comment": "仅管理员可设置，其他用户设置本参数会被忽略",
+          "default": 0,
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "发表新主题"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:46:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:46:9"
+      },
+      "method": "get",
+      "path": "/topic/list",
+      "examples": [],
+      "middlewares": [],
+      "required": [],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "tags": {
+          "type": "Tags",
+          "comment": "标签（数组）：top:置顶, good:精华, ask:新手提问, share:交流讨论, activity:活动推荐, notice:公告通知, top和good仅管理员能设置，其他用户设置时会被自动忽略",
+          "format": true
+        },
+        "keyword": {
+          "type": "String",
+          "comment": "搜索关键字",
+          "format": true
+        },
+        "skip": {
+          "type": "Number",
+          "comment": "查询主题的偏移量",
+          "default": 0,
+          "format": true
+        },
+        "limit": {
+          "type": "Number",
+          "comment": "查询主题的数量",
+          "default": 20,
+          "format": true
+        },
+        "order_by": {
+          "type": "ListOrderBy",
+          "params": {
+            "columns": [
+              "id",
+              "created_at",
+              "updated_at",
+              "last_commented_at"
+            ]
+          },
+          "default": "id:desc",
+          "comment": "有效的排序字段有`id`, `created_at`, `updated_at`, `last_commented_at`",
+          "format": true,
+          "_paramsJSON": "{\"columns\":[\"id\",\"created_at\",\"updated_at\",\"last_commented_at\"]}"
+        }
+      },
+      "group": "topic",
+      "title": "查询主题列表"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:79:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:79:9"
+      },
+      "method": "get",
+      "path": "/topic/item/:id",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists"
+      ],
+      "required": [
+        "id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "show_comments": {
+          "type": "Boolean",
+          "comment": "是否显示评论列表",
+          "default": false,
+          "format": true
+        },
+        "comments_skip": {
+          "type": "Number",
+          "comment": "显示的评论起始位置",
+          "default": 0,
+          "format": true
+        },
+        "comments_limit": {
+          "type": "Number",
+          "comment": "显示的评论数量",
+          "default": 50,
+          "format": true
+        },
+        "comments_order_by": {
+          "type": "ListOrderBy",
+          "params": {
+            "columns": [
+              "id",
+              "created_at",
+              "updated_at"
+            ]
+          },
+          "default": "id:desc",
+          "comment": "有效的排序字段有`id`, `created_at`, `updated_at`",
+          "format": true,
+          "_paramsJSON": "{\"columns\":[\"id\",\"created_at\",\"updated_at\"]}"
+        }
+      },
+      "group": "topic",
+      "title": "查询指定主题的详细信息"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:131:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:131:9"
+      },
+      "method": "put",
+      "path": "/topic/item/:id",
+      "examples": [],
+      "middlewares": [
+        "check_topic_author_or_admin",
+        "check_param_sort_order_only_admin"
+      ],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        },
+        "title": {
+          "type": "TopicTitle",
+          "comment": "标题",
+          "format": true
+        },
+        "content": {
+          "type": "MarkdownContent",
+          "comment": "内容",
+          "format": true
+        },
+        "tags": {
+          "type": "Tags",
+          "comment": "标签（数组）：top:置顶, good:精华, ask:新手提问, share:交流讨论, activity:活动推荐, notice:公告通知, top和good仅管理员能设置，其他用户设置时会被自动忽略",
+          "format": true
+        },
+        "sort_order": {
+          "type": "SortOrder",
+          "comment": "仅管理员可设置，其他用户设置本参数会被忽略",
+          "default": 0,
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "更新主题内容",
+      "description": "仅管理员或作者可操作"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:165:15",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:165:15"
+      },
+      "method": "delete",
+      "path": "/topic/item/:id",
+      "examples": [],
+      "middlewares": [
+        "check_topic_author_or_admin"
+      ],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "删除主题",
+      "description": "仅管理员或作者可操作"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:178:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:178:9"
+      },
+      "method": "post",
+      "path": "/topic/item/:id/like",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists"
+      ],
+      "required": [
+        "$user",
+        "id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "给主题点赞"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:191:15",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:191:15"
+      },
+      "method": "delete",
+      "path": "/topic/item/:id/like",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists"
+      ],
+      "required": [
+        "$user",
+        "id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "取消给主题点赞"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/topic.js:204:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/topic.js:204:9"
+      },
+      "method": "get",
+      "path": "/topic/item/:id/likes",
+      "examples": [],
+      "middlewares": [
+        "check_topic_exists"
+      ],
+      "required": [
+        "id"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "format": true
+        },
+        "id": {
+          "type": "TopicId",
+          "comment": "通过URL参数指定",
+          "format": true
+        }
+      },
+      "group": "topic",
+      "title": "给主题点赞的用户列表"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/user.js:37:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/user.js:37:9"
+      },
+      "method": "post",
+      "path": "/login",
+      "examples": [
+        {
+          "input": {
+            "email": "test1@example.com",
+            "password": "123456",
+            "$cookies": {},
+            "$headers": {
+              "host": "127.0.0.1:51594",
+              "accept-encoding": "gzip, deflate",
+              "user-agent": "node-superagent/1.8.3",
+              "content-type": "multipart/form-data; boundary=--------------------------135795871696023456536154",
+              "content-length": "290",
+              "connection": "close"
+            },
+            "$session": {
+              "cookie": {
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T10:05:56.621Z",
+                "httpOnly": true,
+                "path": "/"
+              },
+              "user": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "updated_at": "2016-06-12T10:05:57.000Z",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "wechat_id": "",
+                "role": "user",
+                "logout_token": "2i8hAlbooP"
+              }
+            }
+          },
+          "output": {
+            "status": 0,
+            "result": {
+              "status": 0,
+              "result": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "role": "user",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "logout_token": "2i8hAlbooP"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "email": "test1@example.com",
+            "password": "12345678",
+            "$cookies": {},
+            "$headers": {
+              "host": "127.0.0.1:51599",
+              "accept-encoding": "gzip, deflate",
+              "user-agent": "node-superagent/1.8.3",
+              "content-type": "multipart/form-data; boundary=--------------------------565629641981872284529494",
+              "content-length": "292",
+              "connection": "close"
+            },
+            "$session": {
+              "cookie": {
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T10:05:56.671Z",
+                "httpOnly": true,
+                "path": "/"
+              }
+            }
+          },
+          "output": {
+            "status": 0,
+            "result": {
+              "error": {},
+              "status": -1,
+              "message": "invalid password"
+            }
+          }
+        },
+        {
+          "input": {
+            "email": "test1@example.com",
+            "password": "123456",
+            "$cookies": {},
+            "$headers": {
+              "host": "127.0.0.1:51601",
+              "accept-encoding": "gzip, deflate",
+              "user-agent": "node-superagent/1.8.3",
+              "content-type": "multipart/form-data; boundary=--------------------------216004633687330767399457",
+              "content-length": "290",
+              "connection": "close"
+            },
+            "$session": {
+              "cookie": {
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T10:05:56.712Z",
+                "httpOnly": true,
+                "path": "/"
+              },
+              "user": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "updated_at": "2016-06-12T10:05:57.000Z",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "wechat_id": "",
+                "role": "user",
+                "logout_token": "9lbXHQsTkm"
+              }
+            }
+          },
+          "output": {
+            "status": 0,
+            "result": {
+              "status": 0,
+              "result": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "role": "user",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "logout_token": "9lbXHQsTkm"
+              }
+            }
+          }
+        }
+      ],
+      "middlewares": [],
+      "required": [
+        "email",
+        "password"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "email": {
+          "type": "Email",
+          "format": true
+        },
+        "password": {
+          "type": "Password",
+          "format": true
+        }
+      },
+      "group": "user",
+      "title": "登录"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/user.js:74:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/user.js:74:9"
+      },
+      "method": "get",
+      "path": "/logout",
+      "examples": [],
+      "middlewares": [],
+      "required": [
+        "$user",
+        "token"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        },
+        "token": {
+          "type": "String",
+          "comment": "为了避免恶意被注销登录，每次登录均会生成唯一的`token`，注销时需要验证",
+          "format": true
+        }
+      },
+      "group": "user",
+      "title": "注销"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/user.js:89:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/user.js:89:9"
+      },
+      "method": "post",
+      "path": "/logout",
+      "examples": [],
+      "middlewares": [],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        }
+      },
+      "group": "user",
+      "title": "注销"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/user.js:100:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/user.js:100:9"
+      },
+      "method": "get",
+      "path": "/my/info",
+      "examples": [
+        {
+          "input": {
+            "$cookies": {},
+            "$headers": {
+              "host": "127.0.0.1:51597",
+              "accept-encoding": "gzip, deflate",
+              "cookie": "hojs.sid=s%3AqRDlYFevYVTNF_5eoaH7nvRIw1pRtInH.Hink5rwqXDm6EbtH2oQsyRIdeM93DObh9uwAHbYk99o",
+              "user-agent": "node-superagent/1.8.3",
+              "connection": "close"
+            },
+            "$session": {
+              "cookie": {
+                "originalMaxAge": 31536000000,
+                "expires": "2017-06-12T10:05:56.650Z",
+                "httpOnly": true,
+                "path": "/"
+              },
+              "user": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "updated_at": "2016-06-12T10:05:57.000Z",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "wechat_id": "",
+                "role": "user",
+                "logout_token": "2i8hAlbooP"
+              }
+            },
+            "$user": "[Circular]"
+          },
+          "output": {
+            "status": 0,
+            "result": {
+              "status": 0,
+              "result": {
+                "id": 1,
+                "email": "test1@example.com",
+                "name": "test1",
+                "about": "来自AA",
+                "role": "user",
+                "last_logined_at": "2016-06-12T10:05:57.000Z",
+                "logout_token": "2i8hAlbooP"
+              }
+            }
+          }
+        }
+      ],
+      "middlewares": [],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        }
+      },
+      "group": "user",
+      "title": "当前登录用户的信息"
+    },
+    {
+      "sourceFile": {
+        "relative": "apis/user.js:113:9",
+        "absolute": "/Users/glen/work/open/hobbs/dist/apis/user.js:113:9"
+      },
+      "method": "post",
+      "path": "/my/info",
+      "examples": [],
+      "middlewares": [],
+      "required": [
+        "$user"
+      ],
+      "requiredOneOf": [],
+      "params": {
+        "$user": {
+          "type": "UserSession",
+          "comment": "通过`/login`接口登录后即自动包含该信息，无需手动设置参数",
+          "format": true
+        },
+        "name": {
+          "type": "TrimString",
+          "comment": "昵称",
+          "format": true
+        },
+        "about": {
+          "type": "TrimString",
+          "comment": "个人简介",
+          "format": true
+        }
+      },
+      "group": "user",
+      "title": "更新当前登录用户信息"
+    }
+  ]
+}
